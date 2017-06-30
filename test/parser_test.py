@@ -1,10 +1,16 @@
 import os, sys, unittest
 
+## add project parent-directory to sys.path
+parent_working_dir = os.path.abspath( os.path.join(os.getcwd(), os.pardir) )
+sys.path.append( parent_working_dir )
+
 from illiad_py.illiad3 import parsers
 
+
 #Directory where test data is stored.
-DATA_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)),
-                         'data')
+DATA_PATH = os.path.join(
+    os.path.dirname(os.path.realpath(__file__)), 'data'
+    )
 
 
 class ParserTest(unittest.TestCase):
