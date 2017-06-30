@@ -41,16 +41,17 @@ class AccountTest(unittest.TestCase):
                         'Current pharmaceutical design')
 
     def test_book(self):
-        """ Tests submit_key on simple book openurl. """
+        """ Tests submit_key on simple book openurl (includes a note). """
         ill = self.ill
         ill.login()
-        openurl = "sid=FirstSearch:WorldCat&genre=book&isbn=9780231122375&title=Mahatma%20Gandhi%20%3A%20nonviolent%20power%20in%20action&date=2000&rft.genre=book"
+        openurl = "sid=FirstSearch:WorldCat&genre=book&isbn=9780231122375&title=Mahatma%20Gandhi%20%3A%20nonviolent%20power%20in%20action&date=2000&rft.genre=book&notes=%E2%80%9Ci%C3%B1t%C3%ABrn%C3%A2ti%C3%B8n%C3%A0l%C4%ADz%C3%A6ti%D0%A4n%E2%80%9D"
         submit_key = ill.get_request_key(openurl)
         self.assertEqual( 'LoanRequest', submit_key['ILLiadForm'] )
         self.assertEqual( 'Mahatma Gandhi : nonviolent power in action', submit_key['LoanTitle'] )
         self.assertEqual( 'LoanRequest', submit_key['ILLiadForm'] )
+        self.assertEqual( '“iñtërnâtiønàlĭzætiФn”', submit_key['Notes'] )
         self.assertEqual(
-            ['CitedIn', 'ILLiadForm', 'ISSN', 'LoanDate', 'LoanTitle', 'NotWantedAfter', 'SearchType', 'SessionID', 'SubmitButton', 'Username', 'blocked', 'errors'],
+            ['CitedIn', 'ILLiadForm', 'ISSN', 'LoanDate', 'LoanTitle', 'NotWantedAfter', 'Notes', 'SearchType', 'SessionID', 'SubmitButton', 'Username', 'blocked', 'errors'],
             sorted(submit_key.keys()) )
 
     def test_book_with_long_openurl(self):
