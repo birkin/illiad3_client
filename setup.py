@@ -1,10 +1,7 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
 from setuptools import setup, find_packages
 
-setup(name='illiad',
-    version='0.8',
+setup(name='illiad3',
+    version='0.9',
     packages=find_packages(),
     install_requires=[
         'requests',
