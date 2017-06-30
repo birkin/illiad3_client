@@ -3,7 +3,7 @@ illiad_py
 
 Under construction.
 
-This will be a python3 library for interacting with [Illiad Interlibrary Loan](http://www.atlas-sys.com/illiad/).
+This is a python3 library for interacting with [Illiad Interlibrary Loan](http://www.atlas-sys.com/illiad/).
 
 It is based on Brown's in-production [python2 illiad library](https://github.com/Brown-University-Library/illiad-client).
 
