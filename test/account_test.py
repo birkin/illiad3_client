@@ -4,7 +4,7 @@ import os, sys, pprint, unittest
 parent_working_dir = os.path.abspath( os.path.join(os.getcwd(), os.pardir) )
 sys.path.append( parent_working_dir )
 
-from illiad_py.illiad3.account import IlliadSession
+from illiad3_client.illiad3.account import IlliadSession
 
 
 class AccountTest(unittest.TestCase):

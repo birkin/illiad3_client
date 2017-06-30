@@ -4,7 +4,7 @@ import os, sys, unittest
 parent_working_dir = os.path.abspath( os.path.join(os.getcwd(), os.pardir) )
 sys.path.append( parent_working_dir )
 
-from illiad_py.illiad3 import parsers
+from illiad3_client.illiad3 import parsers
 
 
 #Directory where test data is stored.
