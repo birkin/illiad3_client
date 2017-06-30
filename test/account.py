@@ -104,9 +104,10 @@ class AccountTest(unittest.TestCase):
 
     def test_logout(self):
         """ Tests logout. """
-        logout = self.ill.logout()
-        self.assertTrue(logout.has_key('authenticated'))
-        self.assertFalse(logout['authenticated'])
+        response_dct = self.ill.logout()
+        # self.assertTrue(logout.has_key('authenticated'))
+        self.assertTrue( 'authenticated' in response_dct.keys() )
+        self.assertFalse(response_dct['authenticated'])
 
 def suite():
     suite = unittest.makeSuite(AccountTest, 'test')
