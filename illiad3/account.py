@@ -50,24 +50,6 @@ class IlliadSession():
         else:
             return False
 
-    # def login(self):
-    #     """
-    #     Logs the user in to Illiad and sets the session id.
-    #     """
-    #     out = {'authenticated': False,
-    #            'session_id': None,
-    #            'new_user': False}
-    #     resp = requests.get(self.url,
-    #                      headers=self.header,
-    #                      verify=True)
-    #     parsed_login = parsers.main_menu(resp.content)
-    #     out.update(parsed_login)
-    #     self.session_id = parsed_login['session_id']
-    #     self.registered = parsed_login['registered']
-    #     logging.info("ILLiad session %s established for %s.  Registered: %s" %\
-    #                     (self.session_id, self.username, self.registered))
-    #     return out
-
     def logout(self):
         """
         Logs the user out of the given session.
