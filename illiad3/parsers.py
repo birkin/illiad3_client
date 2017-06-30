@@ -13,6 +13,8 @@ DIGITS_RE = re.compile('(\d+)')
 
 
 def main_menu(content):
+    """ Parses main illiad landing page.
+        Called by IlliadSession.login() """
     out = {'authenticated': False,
            'session_id': None,
            'registered': None}
@@ -85,9 +87,8 @@ def _check_textareas( soup, submit_key ):
 
 
 def request_submission(content):
-    """
-    Parse the submitted request response from Illiad.
-    """
+    """ Parses the submitted request response from Illiad.
+        Called by IlliadSession.make_request() """
     out = {
            'transaction_number': None,
            'submitted': False,
