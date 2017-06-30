@@ -1,10 +1,6 @@
-# -*- coding: utf-8 -*-
+import os, sys, unittest
 
-from __future__ import unicode_literals
-import os, sys
-import unittest
-
-from illiad.account import parsers
+from illiad_py.illiad3 import parsers
 
 #Directory where test data is stored.
 DATA_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)),

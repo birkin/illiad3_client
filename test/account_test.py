@@ -96,17 +96,15 @@ class AccountTest(unittest.TestCase):
 
     def test_logout(self):
         """ Tests logout. """
-        print( 'here01' )
         response_dct = self.ill.logout()
-        print( 'response_dct, ```%s```' % pprint.pformat(response_dct) )
-        print( 'here02' )
-        # self.assertTrue(logout.has_key('authenticated'))
         self.assertTrue( 'authenticated' in response_dct.keys() )
         self.assertFalse(response_dct['authenticated'])
+
 
 def suite():
     suite = unittest.makeSuite(AccountTest, 'test')
     return suite
+
 
 if __name__ == '__main__':
     unittest.main()

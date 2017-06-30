@@ -24,10 +24,8 @@ class IlliadSession():
         self.auth_header = auth_header
         self.registered = False
         self.blocked_patron = False
-        #Requests module doesn't like unicode for header values.
         self.header={self.auth_header: str(self.username)}
         self.cookies = dict(ILLiadSessionID=self.session_id)
-        print( 'hereA' )
 
     def login(self):
         """ Logs the user in to Illiad and sets the session id. """
@@ -80,12 +78,10 @@ class IlliadSession():
         The logout process just takes the user back to the login screen.
         We will assume that the logout has been processed after issuing the POST.
         """
-        1/0
-        print( 'hereB' )
-        logging.info( 'hereC' )
         out = {}
-        resp = requests.get("%s?SessionID=%s&Action=99" % (self.url, self.session_id),
-                            verify=True)
+        resp = requests.get(
+            "%s?SessionID=%s&Action=99" % (self.url, self.session_id), verify=True
+            )
         logging.info("ILLiad session %s ended for %s." % (self.session_id, self.username))
         out['authenticated'] = False
         return out
