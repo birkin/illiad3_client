@@ -47,8 +47,8 @@ request_key = ill.get_request_key(openurl)
 ## submit request
 submission_response_dct = ill.make_request(request_key)
 pprint.pprint( submission_response_dct )
-print submission_response_dct.get( 'transaction_number' )  # transaction-number on success
-print submission_response_dct.get( 'message' )  # error-message on failure
+print( submission_response_dct.get( 'transaction_number' ) )  # transaction-number on success
+print( submission_response_dct.get( 'message' ) )  # error-message on failure
 
 ## logout
 ill.logout()

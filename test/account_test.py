@@ -46,7 +46,6 @@ class AccountTest(unittest.TestCase):
         ill.login()
         openurl = "sid=FirstSearch:WorldCat&genre=book&isbn=9780231122375&title=Mahatma%20Gandhi%20%3A%20nonviolent%20power%20in%20action&date=2000&rft.genre=book"
         submit_key = ill.get_request_key(openurl)
-        # print 'in test_book()...'; pprint.pprint( submit_key )
         self.assertEqual( 'LoanRequest', submit_key['ILLiadForm'] )
         self.assertEqual( 'Mahatma Gandhi : nonviolent power in action', submit_key['LoanTitle'] )
         self.assertEqual( 'LoanRequest', submit_key['ILLiadForm'] )
@@ -60,7 +59,6 @@ class AccountTest(unittest.TestCase):
         ill.login()
         openurl = 'sid=FirstSearch%3AWorldCat&genre=book&isbn=9784883195732&title=Shin+kanzen+masuta%CC%84.+Nihongo+no%CC%84ryoku+shiken&date=2011&aulast=Fukuoka&aufirst=Rieko&id=doi%3A&pid=858811926%3Cfssessid%3E0%3C%2Ffssessid%3E%3Cedition%3EShohan.%3C%2Fedition%3E&url_ver=Z39.88-2004&rfr_id=info%3Asid%2Ffirstsearch.oclc.org%3AWorldCat&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=book&req_dat=%3Csessionid%3E0%3C%2Fsessionid%3E&rfe_dat=%3Caccessionnumber%3E858811926%3C%2Faccessionnumber%3E&rft_id=info%3Aoclcnum%2F858811926&rft_id=urn%3AISBN%3A9784883195732&rft.aulast=Fukuoka&rft.aufirst=Rieko&rft.btitle=Shin+kanzen+masuta%CC%84.+Nihongo+no%CC%84ryoku+shiken&rft.date=2011&rft.isbn=9784883195732&rft.place=To%CC%84kyo%CC%84&rft.pub=Suri%CC%84e%CC%84+Nettowa%CC%84ku&rft.edition=Shohan.&rft.genre=book'
         submit_key = ill.get_request_key( openurl )
-        # print 'in test_book_returning_no_ILLiadForm()...'; pprint.pprint( submit_key )
         self.assertEqual(
             'LoanRequest', submit_key['ILLiadForm'] )
         self.assertEqual(
@@ -73,7 +71,6 @@ class AccountTest(unittest.TestCase):
         ill.login()
         openurl = 'url_ver=Z39.88-2004&rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook&rft.genre=bookitem&rft.btitle=Current%20Protocols%20in%20Immunology&rft.atitle=Isolation%20and%20Functional%20Analysis%20of%20Neutrophils&rft.date=2001-05-01&rft.isbn=9780471142737&rfr_id=info%3Asid%2Fwiley.com%3AOnlineLibrary'
         submit_key = ill.get_request_key( openurl )
-        # print 'in test...'; pprint.pprint( submit_key )
         self.assertEqual(
             'BookChapterRequest', submit_key['ILLiadForm'] )
         self.assertEqual(
