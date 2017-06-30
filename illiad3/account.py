@@ -12,7 +12,7 @@ from . import parsers
 #By default SSL verification will be set to false.
 #This is likely to be run against a local service where
 #trust has already been established.
-SSL_VERIFICATION = False
+SSL_VERIFICATION = True
 
 
 class IlliadSession():
@@ -27,11 +27,12 @@ class IlliadSession():
         #Requests module doesn't like unicode for header values.
         self.header={self.auth_header: str(self.username)}
         self.cookies = dict(ILLiadSessionID=self.session_id)
+        print( 'hereA' )
 
     def login(self):
         """ Logs the user in to Illiad and sets the session id. """
         out = { 'authenticated': False, 'session_id': None, 'new_user': False }
-        resp = requests.get( self.url, headers=self.header, verify=SSL_VERIFICATION )
+        resp = requests.get( self.url, headers=self.header, verify=True )
         if self._check_blocked( resp.text ) == True:
             out['blocked'] = True
             return out
@@ -63,7 +64,7 @@ class IlliadSession():
     #            'new_user': False}
     #     resp = requests.get(self.url,
     #                      headers=self.header,
-    #                      verify=SSL_VERIFICATION)
+    #                      verify=True)
     #     parsed_login = parsers.main_menu(resp.content)
     #     out.update(parsed_login)
     #     self.session_id = parsed_login['session_id']
@@ -79,9 +80,12 @@ class IlliadSession():
         The logout process just takes the user back to the login screen.
         We will assume that the logout has been processed after issuing the POST.
         """
+        1/0
+        print( 'hereB' )
+        logging.info( 'hereC' )
         out = {}
         resp = requests.get("%s?SessionID=%s&Action=99" % (self.url, self.session_id),
-                            verify=SSL_VERIFICATION)
+                            verify=True)
         logging.info("ILLiad session %s ended for %s." % (self.session_id, self.username))
         out['authenticated'] = False
         return out
@@ -94,7 +98,7 @@ class IlliadSession():
         submit_key = { 'errors': None, 'blocked': False }
         ill_url = "%s/OpenURL?%s" % ( self.url, open_url )
         logging.info("ILLiad request form URL %s." % ill_url)
-        resp = requests.get( ill_url, headers=self.header, cookies=self.cookies, verify=SSL_VERIFICATION )
+        resp = requests.get( ill_url, headers=self.header, cookies=self.cookies, verify=True )
         submit_key = self._check_400( resp, submit_key )
         rkey = parsers.request_form(resp.content)
         submit_key.update(rkey)
@@ -149,7 +153,7 @@ class IlliadSession():
                           data=submit_key,
                           headers=self.header,
                           cookies=self.cookies,
-                          verify=SSL_VERIFICATION)
+                          verify=True)
         submit_resp = parsers.request_submission(resp.content)
         out.update(submit_resp)
         return out
@@ -196,7 +200,7 @@ class IlliadSession():
                           data=reg_key,
                           headers=self.header,
                           cookies=self.cookies,
-                          verify=SSL_VERIFICATION)
+                          verify=True)
         out = {}
         #out['meta'] = r.content
         out['status_code'] = resp.status_code

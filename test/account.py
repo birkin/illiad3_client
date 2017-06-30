@@ -1,7 +1,10 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
 import os, sys, pprint, unittest
+
+## add project parent-directory to sys.path
+parent_working_dir = os.path.abspath( os.path.join(os.getcwd(), os.pardir) )
+sys.path.append( parent_working_dir )
+
+from illiad_py.illiad3.account import IlliadSession
 
 
 class AccountTest(unittest.TestCase):
@@ -10,22 +13,11 @@ class AccountTest(unittest.TestCase):
         self.ILLIAD_REMOTE_AUTH_URL = os.environ['ILLIAD_MODULE__TEST_REMOTE_AUTH_URL']
         self.ILLIAD_REMOTE_AUTH_KEY = os.environ['ILLIAD_MODULE__TEST_REMOTE_AUTH_KEY']
         self.ILLIAD_USERNAME = os.environ['ILLIAD_MODULE__TEST_USERNAME']
-        self.PROJECT_DIR_PATH = os.environ['ILLIAD_MODULE__TEST_PATH']
-        self._setup_path()
-        from illiad.account import IlliadSession
         self.ill = IlliadSession(
             self.ILLIAD_REMOTE_AUTH_URL, self.ILLIAD_REMOTE_AUTH_KEY, self.ILLIAD_USERNAME )
 
     def tearDown(self):
         self.ill.logout()
-
-    def _setup_path(self):
-        """ Adds project dir path to sys path if necessary.
-            Allows `from illiad.account...` to work
-            Called by setUp() """
-        if self.PROJECT_DIR_PATH not in sys.path:
-            sys.path.append( self.PROJECT_DIR_PATH )
-        return
 
     def test_login(self):
         login = self.ill.login()
@@ -104,7 +96,10 @@ class AccountTest(unittest.TestCase):
 
     def test_logout(self):
         """ Tests logout. """
+        print( 'here01' )
         response_dct = self.ill.logout()
+        print( 'response_dct, ```%s```' % pprint.pformat(response_dct) )
+        print( 'here02' )
         # self.assertTrue(logout.has_key('authenticated'))
         self.assertTrue( 'authenticated' in response_dct.keys() )
         self.assertFalse(response_dct['authenticated'])

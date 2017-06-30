@@ -2,7 +2,7 @@
 
 from __future__ import unicode_literals
 import logging, os, pprint
-from illiad.account import IlliadSession
+from illiad3.account import IlliadSession
 
 
 ## settings
