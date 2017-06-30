@@ -1,12 +1,10 @@
-# -*- coding: utf-8 -*-
-
-from __future__ import unicode_literals
 """
 Parsing utilities for various Illiad account pages.
 
 Parsers are separated so that they can be unit tested more easily and adjusted
 without changing the application logic.
 """
+
 import logging, re
 from bs4 import BeautifulSoup
 
