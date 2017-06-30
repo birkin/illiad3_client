@@ -7,8 +7,8 @@ $ python3 ./test/account.py AccountTest.test_logout
 """
 
 import logging, unittest
-from test import account
-from test import parsers
+from test import account_test
+from test import parser_test
 
 
 logger = logging.getLogger()
@@ -23,8 +23,8 @@ logger.addHandler(ch)
 
 def suite():
     test_suite = unittest.TestSuite()
-    test_suite.addTest(account.suite())
-    test_suite.addTest(parsers.suite())
+    test_suite.addTest(account_test.suite())
+    test_suite.addTest(parser_test.suite())
     return test_suite
 
 runner = unittest.TextTestRunner()
