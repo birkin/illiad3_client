@@ -1,12 +1,16 @@
-# -*- coding: utf-8 -*-
+"""
+To test all...
+$ python3 ./test.py
 
-from __future__ import unicode_literals
+To run specific test...
+$ python3 ./test/account.py AccountTest.test_logout
+"""
 
-import unittest
+import logging, unittest
 from test import account
 from test import parsers
 
-import logging
+
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
@@ -15,6 +19,7 @@ ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
 ch.setFormatter(formatter)
 logger.addHandler(ch)
+
 
 def suite():
     test_suite = unittest.TestSuite()
