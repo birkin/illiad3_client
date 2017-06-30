@@ -20,11 +20,11 @@ class AccountTest(unittest.TestCase):
         self.ill.logout()
 
     def test_login(self):
-        login = self.ill.login()
-        self.assertTrue(login.has_key('session_id'))
-        self.assertTrue(login.has_key('authenticated'))
-        self.assertTrue(login.has_key('registered'))
-        self.assertTrue(login['authenticated'])
+        login_resp_dct = self.ill.login()
+        self.assertTrue( 'session_id' in login_resp_dct.keys()  )
+        self.assertTrue( 'authenticated' in login_resp_dct.keys() )
+        self.assertTrue( 'registered' in login_resp_dct.keys() )
+        self.assertTrue( login_resp_dct['authenticated'] )
 
     ## submit_key tests ##
 
