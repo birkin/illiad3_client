@@ -128,7 +128,8 @@ class IlliadSession():
                           data=submit_key,
                           headers=self.header,
                           cookies=self.cookies,
-                          verify=True)
+                          verify=True,
+                          timout=15)
         submit_resp = parsers.request_submission(resp.content)
         out.update(submit_resp)
         return out
@@ -175,7 +176,8 @@ class IlliadSession():
                           data=reg_key,
                           headers=self.header,
                           cookies=self.cookies,
-                          verify=True)
+                          verify=True,
+                          timeout=15)
         out = {}
         #out['meta'] = r.content
         out['status_code'] = resp.status_code
