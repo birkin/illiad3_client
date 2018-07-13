@@ -129,7 +129,7 @@ class IlliadSession():
                           headers=self.header,
                           cookies=self.cookies,
                           verify=True,
-                          timout=15)
+                          timeout=15)
         submit_resp = parsers.request_submission(resp.content)
         out.update(submit_resp)
         return out
